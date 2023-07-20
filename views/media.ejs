@@ -1,0 +1,87 @@
+<!-- media.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Media View</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 400px;
+    }
+
+    h1 {
+      color: #333333;
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+
+    }
+
+    .link {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3f51b5;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    a:hover {
+      background-color: #32408f;
+    }
+
+    .link {
+  text-align: center;
+  margin-bottom: 10px;
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Thread Images/Videos</h1>
+    <% let imageCount = 1; %>
+    <% let videoCount = 1; %>
+    <% links.forEach(function(link) { %>
+      <% if (link.includes('-15/')) { %>
+        <div class="link">
+          <a href="<%= link %>">Image <%= imageCount %> Link</a>
+          <!-- <img src="<%= link %>" alt="Image <%= imageCount %>"> -->
+        </div>
+        <% imageCount++; %>
+      <% } else if (link.includes('-16/')) { %>
+        <div class="link">
+          <a href="<%= link %>">Video <%= videoCount %> Link</a>
+          <!-- <video width="320" height="240" controls>
+            <source src="<%= link %>" type="video/mp4">
+          </video> -->
+        </div>
+        <% videoCount++; %>
+      <% } %>
+    <% }); %>
+  </div>
+</body>
+</html>
