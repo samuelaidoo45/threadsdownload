@@ -27,7 +27,7 @@ app.post('/submit', async (req, res) => {
     //       throw new Error('Valid URL is required');
     // } 
 
-    const browser = await puppeteer.launch(); // Pass headless: "new"
+    const browser = await puppeteer.launch({ headless: "new" }); // Pass headless: "new"
     const page = await browser.newPage();
 
     const requests = [];
@@ -112,5 +112,4 @@ app.post('/submit', async (req, res) => {
 
 // Start the server
 app.listen(process.env.PORT, () => {
-  console.log(`Server is listening on port ${port}`);
 });
