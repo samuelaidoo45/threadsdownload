@@ -27,7 +27,12 @@ app.post('/submit', async (req, res) => {
     //       throw new Error('Valid URL is required');
     // } 
 
-    const browser = await puppeteer.launch({ headless: "new" }); // Pass headless: "new"
+    // const browser = await puppeteer.launch({ headless: "new" }); // Pass headless: "new"
+
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/chromium-browser',
+      headless: "new"
+    })
     
     const page = await browser.newPage();
 
