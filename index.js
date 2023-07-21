@@ -29,9 +29,12 @@ app.post('/submit', async (req, res) => {
 
     // const browser = await puppeteer.launch({ headless: "new" }); // Pass headless: "new"
 
-    
+
     browser = await puppeteer.launch({ 
-      executablePath: '/usr/bin/chromium-browser', args: [ '--disable-gpu', '--disable-setuid-sandbox', '--no-sandbox', '--no-zygote' ], headless: false
+      executablePath: '/usr/bin/chromium-browser', 
+      args: [ '--disable-gpu', '--disable-setuid-sandbox', '--no-sandbox', '--no-zygote' ],
+      headless: false,
+      ignoreDefaultArgs: ['--disable-extensions']
     });
     
     const page = await browser.newPage();
