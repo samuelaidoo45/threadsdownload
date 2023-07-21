@@ -27,7 +27,13 @@ app.post('/submit', async (req, res) => {
     //       throw new Error('Valid URL is required');
     // } 
 
-    const browser = await puppeteer.launch({ headless: "new" }); // Pass headless: "new"
+    // const browser = await puppeteer.launch({ headless: "new" }); // Pass headless: "new"
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      dumpio: true, // Enable logging
+    });
+    
     const page = await browser.newPage();
 
     const requests = [];
